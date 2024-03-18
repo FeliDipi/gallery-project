@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { useGallery } from "../hooks/useGallery.js";
 
@@ -19,31 +18,33 @@ const Gallery = ({children, className, autoDelay = 5000, loop = false}) =>
   const mainStyle = `gallery center ${className}`
 
   return (
-    <div className={mainStyle}>
-      <div className="gallery-content">
-        <motion.div
-          drag="x"
-          dragConstraints={{
-            left: 0,
-            right: 0,
-          }}
-          style={{
-            x: dragX,
-          }}
-          animate={{
-            translateX: `-${currentIndex * 100/children.length}%`,
-          }}
-          transition={SPRING_OPTIONS}
-          onDragEnd={onDragEnd}
-          className="gallery-slide center"
-        >
-          {
-            children
-          }
-        </motion.div>
+    <AnimatePresence>
+      <div className={mainStyle}>
+        <div className="gallery-content">
+          <motion.div
+            drag="x"
+            dragConstraints={{
+              left: 0,
+              right: 0,
+            }}
+            style={{
+              x: dragX,
+            }}
+            animate={{
+              translateX: `-${currentIndex * 100/children.length}%`,
+            }}
+            transition={SPRING_OPTIONS}
+            onDragEnd={onDragEnd}
+            className="gallery-slide center"
+          >
+            {
+              children
+            }
+          </motion.div>
+        </div>
+        <Dots length={children.length} currentIndex={currentIndex} setIndex={setIndex}/>
       </div>
-      <Dots length={children.length} currentIndex={currentIndex} setIndex={setIndex}/>
-    </div>
+    </AnimatePresence>
   );
 }
 

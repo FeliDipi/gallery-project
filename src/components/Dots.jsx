@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const Dots = ({ length, currentIndex, setIndex }) => 
 {
   const createDots = () =>
@@ -9,12 +7,11 @@ const Dots = ({ length, currentIndex, setIndex }) =>
     for(let i=0;i<length;i++)
     {
       dots.push(
-        <motion.button
-        key={i}
-        onClick={() => setIndex(i)}
-        whileHover={{opacity:0.75}}
-        className={`dot ${i === currentIndex ? "dot-selected":"dot-unselected"}`}
-        ></motion.button>
+        <button
+          key={i}
+          onClick={() => setIndex(i)}
+          className={`dot ${i === currentIndex ? "dot-selected":""}`}
+        ></button>
       );
     };
 

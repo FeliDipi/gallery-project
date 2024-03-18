@@ -84,3 +84,16 @@
 
   opacity: 0.5;
 }
+
+.dot-selected
+{
+  opacity: 0.75;
+
+  width: 18px;
+  height: 18px;
+}
+
+.dot:hover
+{
+  opacity: 0.75;
+}
