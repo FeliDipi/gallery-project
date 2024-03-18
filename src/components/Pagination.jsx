@@ -1,4 +1,6 @@
-const Dots = ({ length, currentIndex, setIndex }) => 
+import Dot from "./Dot.jsx";
+
+const Pagination = ({ length, currentIndex, setIndex }) => 
 {
   const createDots = () =>
   {
@@ -6,13 +8,7 @@ const Dots = ({ length, currentIndex, setIndex }) =>
 
     for(let i=0;i<length;i++)
     {
-      dots.push(
-        <button
-          key={i}
-          onClick={() => setIndex(i)}
-          className={`dot ${i === currentIndex ? "dot-selected":""}`}
-        ></button>
-      );
+      dots.push(<Dot key={i} handleOnPagination={setIndex} isCurrent={i===currentIndex}/>);
     };
 
     return dots;
@@ -29,4 +25,4 @@ const Dots = ({ length, currentIndex, setIndex }) =>
   );
 };
 
-export default Dots;
+export default Pagination;

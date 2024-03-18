@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useGallery } from "../hooks/useGallery.js";
 
-import Dots from "./Dots.jsx";
+import Pagination from "./Pagination.jsx";
 
 const SPRING_OPTIONS = {
   type: "spring",
@@ -42,7 +42,7 @@ const Gallery = ({children, className, autoDelay = 5000, loop = false}) =>
             }
           </motion.div>
         </div>
-        <Dots length={children.length} currentIndex={currentIndex} setIndex={setIndex}/>
+        <Pagination length={children.length} currentIndex={currentIndex} setIndex={setIndex}/>
       </div>
     </AnimatePresence>
   );
